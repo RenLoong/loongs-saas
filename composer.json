@@ -1,0 +1,25 @@
+{
+    "name": "loongs/saas",
+    "description": "loong-swoole multi-tenancy (SaaS) on top of loongs/orm — coroutine-local tenant scopes, tenant registry / resolvers, one bounded connection pool per tenant; calls without a tenant keep using the framework / ORM pools",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["saas", "multi-tenant", "multi-tenancy", "tenancy", "orm", "connection-pool", "swoole", "loongs"],
+    "require": {
+        "php": "^8.4",
+        "loongs/orm": "dev-main"
+    },
+    "suggest": {
+        "ext-swoole": "Coroutine-local tenant scopes (Tenancy::run / Tenancy::go) and waiting for a free pooled connection",
+        "loongs/framework": "Calls without a tenant use the framework's PDOPool (db()); tenant pool settings from config('database.tenant_pool')"
+    },
+    "autoload": {
+        "psr-4": {
+            "Loongs\\Saas\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "php -d disable_functions= tests/saas_test.php cli && php -d disable_functions= tests/saas_test.php co"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
